@@ -31,7 +31,11 @@ const DatosUsuario = ()=> {
         error={false}
         helperText={false && "Ingresa un correo electrónico válido"}
         value={email.value}
-        onChange={(input)=>setEmail({value: input.target.value, valid: true })}
+        onChange={(input)=>{
+          const email = input.target.value
+          
+          setEmail({value: email, valid: validarEmail(email) })} // se optimizo el codigo para actualizar el valid dependiendo de las const y function importadas desde otro componente
+        }
       />
       <TextField
         label="Contraseña"
@@ -40,7 +44,11 @@ const DatosUsuario = ()=> {
         margin="dense"
         type="password"
         value={password.value}
-        onChange={(input)=>setPassword({value: input.target.value, valid:true})}
+        onChange={(input)=>{
+          const password = input.target.value
+          
+          setPassword({value: password, value: validarPassword(password)})}  // se optimizo el codigo para actualizar el valid dependiendo de las const y function importadas desde otro componente
+        }
       />
       <Button variant="contained" type="submit" >
         Siguiente
