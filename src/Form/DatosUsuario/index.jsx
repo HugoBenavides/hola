@@ -4,8 +4,8 @@ import { validarEmail,validarPassword } from "./validaciones";
 
 const DatosUsuario = ()=> {
 
-  const [email,setEmail] = useState({value: "harland@mail.com", valid: true});
-  const [password,setPassword] = useState({value: "abc", valid: true});
+  const [email,setEmail] = useState({value: "", valid: null});
+  const [password,setPassword] = useState({value: "", valid: null});
 
   return (
     <Box
@@ -19,7 +19,8 @@ const DatosUsuario = ()=> {
       }}
       onSubmit={(e)=>{
         e.preventDefault()
-        console.log(email,password);
+        console.log(email,"Este es el password",password);
+        if(email.valid && password.valid){console.log("Siguiente formulario")}else{console.log("Aun no puedes pasar al siguiente formulario")}
       }}
     >
       <TextField
@@ -28,13 +29,13 @@ const DatosUsuario = ()=> {
         fullWidth
         margin="dense"
         type="email"
-        error={false}
-        helperText={false && "Ingresa un correo electrónico válido"}
+        error={email.valid === false}
+        helperText={email.valid === false && "Ingresa un correo electrónico válido" }
         value={email.value}
         onChange={(input)=>{
           const email = input.target.value
-          
-          setEmail({value: email, valid: validarEmail(email) })} // se optimizo el codigo para actualizar el valid dependiendo de las const y function importadas desde otro componente
+          const valido = validarEmail(email)
+          setEmail({value: email, valid: valido })} // se optimizo el codigo para actualizar el valid dependiendo de las const y function importadas desde otro componente
         }
       />
       <TextField
@@ -43,11 +44,13 @@ const DatosUsuario = ()=> {
         fullWidth
         margin="dense"
         type="password"
+        error={password.valid === false}
+        helperText={password.valid === false && "Ingresa un password"}
         value={password.value}
         onChange={(input)=>{
           const password = input.target.value
-          
-          setPassword({value: password, value: validarPassword(password)})}  // se optimizo el codigo para actualizar el valid dependiendo de las const y function importadas desde otro componente
+          const valido = validarPassword(password)
+          setPassword({value: password, valid: valido })} // se optimizo el codigo para actualizar el valid dependiendo de las const y function importadas desde otro componente
         }
       />
       <Button variant="contained" type="submit" >
