@@ -10,7 +10,7 @@ import Stepper from "../Stepper";
 
 const Form = () => {
 
-  const [step,setStep] = useState(1); // se crea un useState para guargar un valor que sera usado con un switch case
+  const [step,setStep] = useState(2); // se crea un useState para guargar un valor que sera usado con un switch case
 
 
   const updateStep = ()=>{
