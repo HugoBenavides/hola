@@ -5,7 +5,7 @@ import SelectInput from "@mui/material/Select/SelectInput";
 
 const DatosEntrega = ({updateStep}) => {
 
-  const [adress,setAdress] = useState({value:"", valid:null})
+  const [address,setAddress] = useState({value:"", valid:null})
   const [city,setCity] = useState({value: "", valid:null})
   const [estado,setEstado] = useState({value:"", valid:null})
 
@@ -30,11 +30,11 @@ const DatosEntrega = ({updateStep}) => {
         fullWidth
         margin="dense"
         type="text"
-        value={adress.value}
+        value={address.value}
         onChange={(input)=>{
           const value = input.target.value
           const valid = validarCiudad(value)
-          setAdress({value,valid})
+          setAddress({value,valid})
           console.log(value,valid)
         }}
       />

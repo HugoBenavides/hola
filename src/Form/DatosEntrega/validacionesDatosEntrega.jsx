@@ -1,6 +1,6 @@
-export const validarDireccion = (adress)=>{
+export const validarDireccion = (address)=>{
     
-    const length = adress.length;
+    const length = address.length;
     return (length >1 && length<50)? true : false;
 }
 
