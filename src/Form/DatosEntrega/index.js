@@ -33,10 +33,12 @@ const DatosEntrega = ({updateStep}) => {
         value={address.value}
         onChange={(input)=>{
           const value = input.target.value
-          const valid = validarCiudad(value)
+          const valid = validarDireccion(value)
           setAddress({value,valid})
           console.log(value,valid)
         }}
+        error={address.valid === false}
+        helperText={address.valid === false && "Ingrese una dirección válida"}
       />
       <TextField
         label="Ciudad"
@@ -51,6 +53,8 @@ const DatosEntrega = ({updateStep}) => {
           setCity({value,valid})
           console.log(value,valid)
         }}
+        error={city.valid === false}
+        helperText={city.valid === false  && "Favor de ingresar una ciudad"}
       />
       <TextField
         label="Estado/Provincia"
@@ -65,6 +69,8 @@ const DatosEntrega = ({updateStep}) => {
           setEstado({value,valid})
           console.log(value,valid)
         }}
+        error={estado.valid === false}
+        helperText={estado.valid === false && "Ingrese un estado por favor"}
       />
       <Button variant="contained" type="submit">
         Crear cuenta
